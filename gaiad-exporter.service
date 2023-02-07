@@ -1,0 +1,15 @@
+[Unit]
+Description=gaiad exporter
+After=network.target
+StartLimitIntervalSec=0
+[Service]
+User=gaia
+Type=simple
+Restart=always
+RestartSec=1
+WorkingDirectory=/home/gaia/.gaiad-exporter
+EnvironmentFile=/home/gaia/.gaiad-exporter/.env
+ExecStart=/home/gaia/.gaiad-exporter/gaiad-exporter --listen-address=[::]:9101 --config-file-path=/home/gaia/.gaiad-exporter/.env
+
+[Install]
+WantedBy=multi-user.target
